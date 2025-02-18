@@ -1,0 +1,136 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #007BFF;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(0, 0, 0, 0.7); 
+  position: absolute; 
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100px; 
+  padding: 20px 60px; 
+  display: flex;
+  align-items: center;
+}
+
+
+.navbar-brand img {
+  max-height: 50px;
+}
+
+.navbar-menu {
+  flex-grow: 1;
+  justify-content: flex-end;
+  margin-right: 40px;
+}
+
+.navbar-item {
+  margin-left: 1rem;
+  font-weight: bold;
+  color: #f5efef;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.hero .title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/* Section */
+.section {
+  padding: 2rem 0;
+}
+
+.heading {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #007BFF;
+}
+
+/* Columns */
+.columns {
+  display: flex;
+  gap: 2rem;
+}
+
+.column {
+  flex: 1;
+  text-align: center;
+}
+
+.column img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.footer a {
+  color: #007BFF;
+}
+
+/* Footer Social Icons Style */
+.social-icons {
+  margin-top: 10px;
+}
+.social-icons a {
+  color: #333; /* Default color */
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #007BFF; /* Changes to blue on hover */
+}
+/* Custom Hero Section with Background Image */
+.custom-header {
+  background-image: url("resources/Fall campus.png");
+  background-size: cover; 
+  background-position: center;
+  height: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+/* For text readable above the image */
+.custom-header .title,
+.custom-header .subtitle {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* text shadow */
+}
