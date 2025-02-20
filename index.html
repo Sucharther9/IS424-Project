@@ -12,27 +12,36 @@
     <!-- CSS -->
     <link rel="stylesheet" href="APO.css" />
     <!-- Font Awesome for social media icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="#" id="logo">
-            <img src="resources/logo.png" alt="Logo" style="max-height: 60px;">
+            <img src="resources/logo.png" alt="Logo" style="max-height: 60px" />
+          </a>
+
+          <!-- Mobile menu toggle button -->
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navMenu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
           </a>
         </div>
 
-<!-- Mobile menu toggle button (Follows Bulma framework's default structure)-->
-<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
-  <span aria-hidden="true"></span>
-  <span aria-hidden="true"></span>
-  <span aria-hidden="true"></span>
-</a>
-
-  </div>
-        <div class="navbar-menu">
+        <!-- Mobile and desktop menu -->
+        <div id="navMenu" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="#" id="home">Home</a>
             <a class="navbar-item" href="#" id="calendar">Calendar</a>
@@ -45,16 +54,15 @@
       </div>
     </nav>
 
-<!-- Header Section -->
-<header class="custom-header">
-  <div class="hero-content">
-    <h1 class="title has-text-white">Alpha Phi Omega</h1>
-    <h2 class="subtitle has-text-light">
-      University of Wisconsin-Madison Chapter
-    </h2>
-  </div>
-</header>
-
+    <!-- Header Section -->
+    <header class="custom-header">
+      <div class="hero-content">
+        <h1 class="title has-text-white">Alpha Phi Omega</h1>
+        <h2 class="subtitle has-text-light">
+          University of Wisconsin-Madison Chapter
+        </h2>
+      </div>
+    </header>
 
     <!-- Home Page Content -->
     <section class="section">
@@ -73,7 +81,8 @@
           <div class="column is-two-thirds">
             <div class="box">
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, doloremque.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Expedita, doloremque.
               </p>
             </div>
           </div>
@@ -128,11 +137,11 @@
                 style="width: 80%; max-height: auto"
               />
             </div>
-            
+
             <!-- Google Calendar -->
             <div class="column is-two-thirds">
               <iframe
-                src="https://calendar.google.com/calendar/embed?src=zlo2%40wisc.edu&ctz=America%2FChicago" 
+                src="https://calendar.google.com/calendar/embed?src=zlo2%40wisc.edu&ctz=America%2FChicago"
                 style="border: 0"
                 width="100%"
                 height="600"
@@ -147,19 +156,35 @@
 
     <!-- Footer -->
     <footer class="footer has-text-centered">
-      <p class="has-text-weight-bold">333 East Campus Mall #39 Madison, WI 53715</p>
+      <p class="has-text-weight-bold">
+        333 East Campus Mall #39 Madison, WI 53715
+      </p>
+
       <!-- Social Media Links -->
-     <div class="social-icons">
-        <a href="https://www.instagram.com/apobetatheta/" target="_blank" class="icon is-large">
+      <div class="social-icons">
+        <a
+          href="https://www.instagram.com/apobetatheta/"
+          target="_blank"
+          class="icon is-large"
+        >
           <i class="fab fa-instagram fa-2x"></i>
         </a>
-        <a href="https://twitter.com/apo_betatheta" target="_blank" class="icon is-large">
+        <a
+          href="https://twitter.com/apo_betatheta"
+          target="_blank"
+          class="icon is-large"
+        >
           <i class="fab fa-twitter fa-2x"></i>
         </a>
-        <a href="https://www.facebook.com/groups/283165407019356" target="_blank" class="icon is-large">
+        <a
+          href="https://www.facebook.com/groups/283165407019356"
+          target="_blank"
+          class="icon is-large"
+        >
           <i class="fab fa-facebook fa-2x"></i>
         </a>
       </div>
+
       <a href="#" class="has-text-weight-bold" id="contact_us">Contact Us</a>
     </footer>
 
