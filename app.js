@@ -29,6 +29,7 @@ home.addEventListener("click", () => {
   home_page.classList.remove("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
+  contact_page.classList.add("is-hidden");
 });
 
 let event_site = document.getElementById("event_site");
@@ -37,6 +38,7 @@ event_site.addEventListener("click", () => {
   event_page.classList.remove("is-hidden");
   home_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
+  contact_page.classList.add("is-hidden");
 });
 
 let calendar = document.getElementById("calendar");
@@ -45,6 +47,7 @@ calendar.addEventListener("click", () => {
   calendar_page.classList.remove("is-hidden");
   home_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
+  contact_page.classList.add("is-hidden");
 });
 
 let logo = document.getElementById("logo");
@@ -52,6 +55,7 @@ logo.addEventListener("click", () => {
   home_page.classList.remove("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
+  contact_page.classList.add("is-hidden");
 });
 
 let contact = document.getElementById("contact");
