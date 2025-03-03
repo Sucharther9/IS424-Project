@@ -54,4 +54,19 @@ logo.addEventListener("click", () => {
   calendar_page.classList.add("is-hidden");
 });
 
+let contact = document.getElementById("contact");
+let contact_page = document.getElementById("contact_page");
+contact.addEventListener("click", () => {
+  contact_page.classList.remove("is-hidden");
+  home_page.classList.add("is-hidden");
+  event_page.classList.add("is-hidden");
+  calendar_page.classList.add("is-hidden");
+});
 
+let contact_us = document.getElementById("contact_us");
+contact_us.addEventListener("click", () => {
+  contact_page.classList.remove("is-hidden");
+  home_page.classList.add("is-hidden");
+  event_page.classList.add("is-hidden");
+  calendar_page.classList.add("is-hidden");
+});
