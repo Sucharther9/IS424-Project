@@ -30,6 +30,7 @@ home.addEventListener("click", () => {
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
   contact_page.classList.add("is-hidden");
+  important_links_page.classList.add("is-hidden");
 });
 
 let event_site = document.getElementById("event_site");
@@ -39,6 +40,7 @@ event_site.addEventListener("click", () => {
   home_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
   contact_page.classList.add("is-hidden");
+  important_links_page.classList.add("is-hidden");
 });
 
 let calendar = document.getElementById("calendar");
@@ -48,6 +50,7 @@ calendar.addEventListener("click", () => {
   home_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
   contact_page.classList.add("is-hidden");
+  important_links_page.classList.add("is-hidden");
 });
 
 let logo = document.getElementById("logo");
@@ -56,6 +59,7 @@ logo.addEventListener("click", () => {
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
   contact_page.classList.add("is-hidden");
+  important_links_page.classList.add("is-hidden");
 });
 
 let contact = document.getElementById("contact");
@@ -65,6 +69,7 @@ contact.addEventListener("click", () => {
   home_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
+  important_links_page.classList.add("is-hidden");
 });
 
 let contact_us = document.getElementById("contact_us");
@@ -73,13 +78,15 @@ contact_us.addEventListener("click", () => {
   home_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
+  important_links_page.classList.add("is-hidden");
 });
 
 // important_link page
-let important_links = document.getElementById("important_links_page");
-important_links.addEventListener("click", (event) => {
-  important_links_content.classList.remove("is-hidden"); 
-  home_page.classList.add("is-hidden");                  
+let important_links = document.getElementById("important_links"); // Link or button to show Important Links page
+let important_links_page = document.getElementById("important_links_page");
+important_links.addEventListener("click", () => {
+  important_links_page.classList.remove("is-hidden"); // Show Important Links page
+  home_page.classList.add("is-hidden");               // Hide other pages
   contact_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
