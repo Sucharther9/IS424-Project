@@ -81,12 +81,22 @@ contact_us.addEventListener("click", () => {
   important_links_page.classList.add("is-hidden");
 });
 
+let about_us = document.getElementById("about");
+let about_page = document.getElementById("about_us_page");
+about_us.addEventListener("click", () => {
+  contact_page.classList.remove("is-hidden");
+  home_page.classList.add("is-hidden");
+  event_page.classList.add("is-hidden");
+  calendar_page.classList.add("is-hidden");
+  important_links_page.classList.add("is-hidden");
+});
+
 // important_link page
 let important_links = document.getElementById("important_links"); // Link or button to show Important Links page
 let important_links_page = document.getElementById("important_links_page");
 important_links.addEventListener("click", () => {
   important_links_page.classList.remove("is-hidden"); // Show Important Links page
-  home_page.classList.add("is-hidden");               // Hide other pages
+  home_page.classList.add("is-hidden"); // Hide other pages
   contact_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
