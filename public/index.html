@@ -47,7 +47,9 @@
             <a class="navbar-item" href="#" id="home">Home</a>
             <a class="navbar-item" href="#" id="calendar">Calendar</a>
             <a class="navbar-item" href="#" id="event_site">Upcoming Events</a>
-            <a class="navbar-item" href="#" id="important_links">Important Links</a>
+            <a class="navbar-item" href="#" id="important_links"
+              >Important Links</a
+            >
             <a class="navbar-item" href="#" id="contact">Contact Us</a>
             <a class="navbar-item" href="#">About Us</a>
           </div>
@@ -155,22 +157,37 @@
       </div>
     </section>
 
-<!-- Important Links Page -->
+    <!-- Important Links Page -->
     <div class="columns is-centered is-hidden" id="important_links_page">
       <div class="container">
         <h1 class="title">Important Links</h1>
         <div class="content">
           <ul>
-            <li><a href="https://www.example1.com" target="_blank">Example Link 1</a></li>
-            <li><a href="https://www.example2.com" target="_blank">Example Link 2</a></li>
-            <li><a href="https://www.example3.com" target="_blank">Example Link 3</a></li>
-            <li><a href="https://www.example4.com" target="_blank">Example Link 4</a></li>
+            <li>
+              <a href="https://www.example1.com" target="_blank"
+                >Example Link 1</a
+              >
+            </li>
+            <li>
+              <a href="https://www.example2.com" target="_blank"
+                >Example Link 2</a
+              >
+            </li>
+            <li>
+              <a href="https://www.example3.com" target="_blank"
+                >Example Link 3</a
+              >
+            </li>
+            <li>
+              <a href="https://www.example4.com" target="_blank"
+                >Example Link 4</a
+              >
+            </li>
           </ul>
         </div>
       </div>
     </div>
 
-    
     <!-- Contact Us -->
     <div class="columns is-centered is-hidden" id="contact_page">
       <div class="column is-half box">
@@ -237,5 +254,28 @@
     </footer>
 
     <script src="app.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCxYqv3XK_41WN_FCiQWIVyJkFTECgaNzw",
+        authDomain: "alphaphiomega-5bee2.firebaseapp.com",
+        projectId: "alphaphiomega-5bee2",
+        storageBucket: "alphaphiomega-5bee2.firebasestorage.app",
+        messagingSenderId: "36501675935",
+        appId: "1:36501675935:web:91a4023bb1338c60bb27aa",
+        measurementId: "G-G4N0RTEKC1",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </body>
 </html>
