@@ -118,3 +118,38 @@ important_links.addEventListener("click", () => {
   calendar_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
 });
+
+// student document
+
+let student = {
+  s_id: "0941471490",
+  f_name: "John",
+  l_name: "Hunt",
+  w_email: "jhunt@wisc.edu",
+  message: [
+    {
+      expected_graduation_year: "2026",
+      expected_graduation_semester: "Spring",
+    },
+  ],
+};
+
+// client document
+
+let client = {
+  customer_id: "56781234",
+  first_name: "Alice",
+  last_name: "Nguyen",
+  email: "alice.nguyen@example.com",
+  message: "Looking forward to your response!",
+};
+
+db.collection("students")
+  .doc(student.s_id) // use the student's ID as the document ID
+  .set(student)
+  .then(() => {
+    console.log("Student added successfully!");
+  })
+  .catch((error) => {
+    console.error("Error adding student: ", error);
+  });
