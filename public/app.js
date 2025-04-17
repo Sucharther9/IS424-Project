@@ -32,6 +32,7 @@ home.addEventListener("click", () => {
   contact_page.classList.add("is-hidden");
   important_links_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
+  about_us_page.classList.add("is-hidden");
 });
 
 let event_site = document.getElementById("event_site");
@@ -43,6 +44,7 @@ event_site.addEventListener("click", () => {
   contact_page.classList.add("is-hidden");
   important_links_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
+  about_us_page.classList.add("is-hidden");
 });
 
 let calendar = document.getElementById("calendar");
@@ -54,6 +56,7 @@ calendar.addEventListener("click", () => {
   contact_page.classList.add("is-hidden");
   important_links_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
+  about_us_page.classList.add("is-hidden");
 });
 
 let logo = document.getElementById("logo");
@@ -64,6 +67,7 @@ logo.addEventListener("click", () => {
   contact_page.classList.add("is-hidden");
   important_links_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
+  about_us_page.classList.add("is-hidden");
 });
 
 let contact = document.getElementById("contact");
@@ -75,6 +79,7 @@ contact.addEventListener("click", () => {
   calendar_page.classList.add("is-hidden");
   important_links_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
+  about_us_page.classList.add("is-hidden");
 });
 
 let contact_us = document.getElementById("contact_us");
@@ -85,12 +90,13 @@ contact_us.addEventListener("click", () => {
   calendar_page.classList.add("is-hidden");
   important_links_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
+  about_us_page.classList.add("is-hidden");
 });
 
 let about_us = document.getElementById("about");
-let about_page = document.getElementById("about_us_page");
+let about_us_page = document.getElementById("about_us_page");
 about_us.addEventListener("click", () => {
-  about_page.classList.remove("is-hidden");
+  about_us_page.classList.remove("is-hidden");
   home_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
@@ -101,7 +107,7 @@ let join_us = document.getElementById("joinus");
 let join_us_page = document.getElementById("join_us_page");
 join_us.addEventListener("click", () => {
   join_us_page.classList.remove("is-hidden");
-  about_page.classList.add("is-hidden");
+  about_us_page.classList.classList.add("is-hidden");
   home_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
@@ -117,4 +123,5 @@ important_links.addEventListener("click", () => {
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
+  about_us_page.classList.classList.add("is-hidden");
 });
