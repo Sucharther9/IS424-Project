@@ -8,7 +8,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #007BFF;
+  color: #007bff;
 }
 
 a:hover {
@@ -17,17 +17,25 @@ a:hover {
 
 /* Navbar */
 .navbar {
-  background: rgba(0, 0, 0, 0.7); 
-  position: absolute; 
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
   width: 100%;
   top: 0;
   left: 0;
-  height: 100px; 
-  padding: 20px 60px; 
+  height: 100px;
+  padding: 20px 60px;
   display: flex;
   align-items: center;
 }
-
+.slideshow {
+  margin-top: 1.5rem;
+  border: 2px solid #dbdbdb;
+  border-radius: 10px;
+  padding: 0.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .navbar-brand img {
   max-height: 50px;
@@ -47,7 +55,7 @@ a:hover {
 
 /* Hero Section */
 .hero {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: #fff;
   padding: 2rem 0;
   text-align: center;
@@ -71,7 +79,7 @@ a:hover {
 .heading {
   font-size: 1.75rem;
   margin-bottom: 1rem;
-  color: #007BFF;
+  color: #007bff;
 }
 
 /* Columns */
@@ -101,7 +109,7 @@ a:hover {
 }
 
 .footer a {
-  color: #007BFF;
+  color: #007bff;
 }
 
 /* Footer Social Icons Style */
@@ -114,12 +122,12 @@ a:hover {
   transition: color 0.3s ease;
 }
 .social-icons a:hover {
-  color: #007BFF; /* Changes to blue on hover */
+  color: #007bff; /* Changes to blue on hover */
 }
 /* Custom Hero Section with Background Image */
 .custom-header {
   background-image: url("resources/Fall campus.png");
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
   height: 620px;
   display: flex;
@@ -132,5 +140,5 @@ a:hover {
 /* For text readable above the image */
 .custom-header .title,
 .custom-header .subtitle {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* text shadow */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* text shadow */
 }
