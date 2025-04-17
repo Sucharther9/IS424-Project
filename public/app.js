@@ -125,3 +125,23 @@ important_links.addEventListener("click", () => {
   join_us_page.classList.add("is-hidden");
   about_us_page.classList.classList.add("is-hidden");
 });
+//Slide show on about page
+let slideIndex = 0;
+const slides = document.getElementsByClassName("slideshow-image");
+
+function showSlide(index) {
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[index].style.display = "block";
+}
+
+function plusSlides(n) {
+  slideIndex = (slideIndex + n + slides.length) % slides.length;
+  showSlide(slideIndex);
+}
+
+// Auto-show first slide on load
+document.addEventListener("DOMContentLoaded", function () {
+  showSlide(slideIndex);
+});
