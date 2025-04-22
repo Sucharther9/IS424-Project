@@ -102,6 +102,7 @@ about_us.addEventListener("click", () => {
   calendar_page.classList.add("is-hidden");
   important_links_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
+  contact_page.classList.add("is-hidden");
 });
 let join_us = document.getElementById("joinus");
 let join_us_page = document.getElementById("join_us_page");
@@ -112,6 +113,7 @@ join_us.addEventListener("click", () => {
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
   important_links_page.classList.add("is-hidden");
+  contact_page.classList.add("is-hidden");
 });
 // important_link page added later
 let important_links = document.getElementById("important_links");
