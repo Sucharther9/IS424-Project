@@ -145,7 +145,6 @@ let client = {
 };
 
 db.collection("students")
-  .doc(student.s_id)
   .set(student)
   .then(() => {
     console.log("Student added successfully!");
