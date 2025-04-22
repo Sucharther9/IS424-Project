@@ -145,7 +145,7 @@ let client = {
 };
 
 db.collection("students")
-  .doc(student.s_id) // use the student's ID as the document ID
+  .doc(student.s_id)
   .set(student)
   .then(() => {
     console.log("Student added successfully!");
