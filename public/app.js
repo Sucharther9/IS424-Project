@@ -107,7 +107,7 @@ let join_us = document.getElementById("joinus");
 let join_us_page = document.getElementById("join_us_page");
 join_us.addEventListener("click", () => {
   join_us_page.classList.remove("is-hidden");
-  about_us_page.classList.classList.add("is-hidden");
+  about_us_page.classList.add("is-hidden");
   home_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
