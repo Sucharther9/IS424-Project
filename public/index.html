@@ -57,8 +57,67 @@
           </div>
         </div>
       </div>
+      <div class="buttons">
+        <button class="button is-light" onclick="openModal('signup')">
+          Sign Up
+        </button>
+        <button class="button is-light" onclick="openModal('signin')">
+          Sign In
+        </button>
+      </div>
     </nav>
+    <!-- sign in modal, should pop up -->
+    <div id="authModal" class="modal" style="display: none">
+      <div class="modal-background" onclick="closeModal()"></div>
+      <div class="modal-content" style="max-width: 400px; margin: auto">
+        <div
+          class="box"
+          style="padding: 2rem; background: white; border-radius: 8px"
+        >
+          <h2 id="modalTitle" class="title is-4" style="text-align: center">
+            Sign In
+          </h2>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input
+                id="emailInput"
+                class="input"
+                type="email"
+                placeholder="e.g. you@example.com"
+              />
+            </div>
+          </div>
 
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input
+                id="passwordInput"
+                class="input"
+                type="password"
+                placeholder="********"
+              />
+            </div>
+          </div>
+
+          <div class="field" style="margin-top: 1.5rem">
+            <button
+              id="authButton"
+              class="button is-fullwidth is-link"
+              onclick="submitAuth()"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        class="modal-close is-large"
+        aria-label="close"
+        onclick="closeModal()"
+      ></button>
+    </div>
     <!-- Header Section -->
     <header class="custom-header">
       <div class="hero-content">
@@ -73,7 +132,6 @@
     <section class="section">
       <div class="container" id="home_page">
         <div class="columns">
-          <!-- Image Section -->
           <div class="column is-one-third">
             <img
               src="resources/APO.png"
@@ -82,14 +140,94 @@
             />
           </div>
 
-          <!-- Text Content -->
           <div class="column is-two-thirds">
             <div class="box">
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Expedita, doloremque.
+                Alpha Phi Omega is a national Co-ed Service Fraternity.
+                Following the cardinal principles of leadership, friendship and
+                service, APO serves our chapter, campus, community and country.
+                Not only does APO do various service events, but also social
+                events to create the lasting bonds of brotherhood. The pledging
+                process is rewarding and manageable. Every different type of
+                major can flourish in Alpha Phi Omega, and different talents are
+                highlighted. Whether you are good at math, art, sports,
+                speaking, teaching, computer programming, or just having fun,
+                Alpha Phi Omega - Beta Theta is the place for you!
               </p>
             </div>
+          </div>
+        </div>
+        <div class="box slideshow">
+          <div
+            class="slideshow-container"
+            style="position: relative; max-width: 100%"
+          >
+            <div class="slideshow-image" style="display: block">
+              <img
+                src="resources/20240911_172142_94CEE7.png"
+                style="width: 100%; border-radius: 10px"
+              />
+            </div>
+            <div class="slideshow-image" style="display: none">
+              <img
+                src="resources/20240911_172142_94CEE7.png"
+                style="width: 100%; border-radius: 10px"
+              />
+            </div>
+            <div class="slideshow-image" style="display: none">
+              <img
+                src="resources/20241122_181309_9CCA90.png"
+                style="width: 100%; border-radius: 10px"
+              />
+            </div>
+            <div class="slideshow-image" style="display: none">
+              <img
+                src="resources/20250206_212547_91A0ED.png"
+                style="width: 100%; border-radius: 10px"
+              />
+            </div>
+            <div class="slideshow-image" style="display: none">
+              <img
+                src="resources/20240920_182450_9A5616.png"
+                style="width: 100%; border-radius: 10px"
+              />
+            </div>
+            <div class="slideshow-image" style="display: none">
+              <img
+                src="resources/20230726_160608_908105.png"
+                style="width: 100%; border-radius: 10px"
+              />
+            </div>
+            <div class="slideshow-image" style="display: none">
+              <img
+                src="resources/20240413_130652_901517.png"
+                style="width: 100%; border-radius: 10px"
+              />
+            </div>
+            <a
+              class="button is-small is-light"
+              style="
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+              "
+              onclick="plusSlides(-1)"
+            >
+              &#10094;
+            </a>
+            <a
+              class="button is-small is-light"
+              style="
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+              "
+              onclick="plusSlides(1)"
+            >
+              &#10095;
+            </a>
           </div>
         </div>
       </div>
@@ -127,68 +265,74 @@
           </table>
         </div>
       </div>
-      <div class="container">
-        <div class="box">
-          <table class="table is-fullwidth">
-            <thead>
-              <header class="is-bold">Meeting Minutes</header>
-              <tr>
-                <th>Date</th>
-                <th>Minutes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Mar. 16</td>
-                <td>1 hour</td>
-              </tr>
-              <tr>
-                <td>Apr. 1</td>
-                <td>1 hour</td>
-              </tr>
-              <tr>
-                <td>Apr. 20</td>
-                <td>1 hour</td>
-              </tr>
-              <tr>
-                <td>May 1</td>
-                <td>1 hour</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
     </section>
     <!-- Join us -->
-    <div class="columns is-centered is-hidden" id="join_us_page">
-      <div class="column is-half box">
-        <form id="feedback_form">
-          <div class="field">
-            <label class="label">Name:</label>
-            <div class="control">
-              <input class="input" type="email" name="" id="f_email" required />
+    <div class="is-hidden" id="join_us_page">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-two-thirds">
+            <div class="box">
+              <p>
+                <strong>BROTHER REQUIREMENTS:</strong> 18 Service Hours, 5
+                Fellowship Hours (Social Events), 3 Leadership Hours, 2
+                Ceremonies, 5 General Meetings, 1 Executive Meeting, 1 Pledge
+                Meeting, 1 Rush Event, 1 Set of Dues, Pledge Reviews, Elections
+              </p>
+              <p>
+                <strong>ASSOCIATE REQUIREMENTS:</strong> 9 Hours of Service, 3
+                Fellowship Hours, 1 Leadership Hour, 3 General Meetings, 1
+                Pledge Meeting, 1 Executive Meeting, 1 Rush Event, 1 Ceremony, 1
+                Set of Dues, Elections or Pledge Review
+              </p>
+              <p>
+                <strong>PLEDGE REQUIREMENTS:</strong> 12 Service Hours, 3
+                Fellowship Hours, 2 Leadership Hours, 1 General Meeting, All
+                Pledge Meetings, 1 Executive Meeting, 2 Ceremonies, Pledge
+                Reviews, Elections, 2 Sets of Dues
+              </p>
             </div>
           </div>
-          <div class="field">
-            <label class="label">Year</label>
-            <div class="control">
-              <textarea
-                class="textarea"
-                name=""
-                id="feedback"
-                cols="1"
-                rows="10"
-              ></textarea>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="box">
+              <form id="feedback_form">
+                <div class="field">
+                  <label class="label">Name:</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="email"
+                      name=""
+                      id="f_email"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control">
+                    <textarea
+                      class="textarea"
+                      name=""
+                      id="feedback"
+                      cols="1"
+                      rows="1"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary">Submit</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
-          <div class="field">
-            <div class="control">
-              <button class="button is-primary">Submit</button>
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
+
     <!-- Calendar -->
     <section class="section is-hidden" id="calendar_page">
       <div class="container">
@@ -220,32 +364,55 @@
     </section>
 
     <!-- Important Links Page -->
-    <div class="columns is-centered is-hidden" id="important_links_page">
+    <div class="is-hidden" id="important_links_page">
       <div class="container">
-        <h1 class="title">Important Links</h1>
-        <div class="content">
-          <ul>
-            <li>
-              <a href="https://www.example1.com" target="_blank"
-                >Example Link 1</a
-              >
-            </li>
-            <li>
-              <a href="https://www.example2.com" target="_blank"
-                >Example Link 2</a
-              >
-            </li>
-            <li>
-              <a href="https://www.example3.com" target="_blank"
-                >Example Link 3</a
-              >
-            </li>
-            <li>
-              <a href="https://www.example4.com" target="_blank"
-                >Example Link 4</a
-              >
-            </li>
-          </ul>
+        <div class="columns is-centered">
+          <div class="column is-two-thirds">
+            <div class="box">
+              <h2 class="title">Meeting Minutes</h2>
+              <p>
+                <a
+                  href="https://drive.google.com/drive/folders/1QtBw6OddumViaQu8tfol5ya1BJ0ieeja?usp=sharing"
+                  target="_blank"
+                >
+                  Access Meeting Minutes Drive Folder
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-two-thirds">
+            <div class="box">
+              <h2 class="title">Important Links</h2>
+              <div class="content">
+                <ul>
+                  <li>
+                    <a href="https://apo.org/" target="_blank"
+                      >National APO Site</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://win.wisc.edu/organization/alphaphiomega"
+                      target="_blank"
+                      >Wisconsin Involvement Network</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://www.example3.com" target="_blank"
+                      >Example Link 3</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://www.example4.com" target="_blank"
+                      >Example Link 4</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -283,7 +450,19 @@
     <!-- about us page -->
     <div class="columns is-centered is-hidden" id="about_us_page">
       <div class="column is-half box">
-        <title>About APO - Madison Chapter</title>
+        <p>
+          Alpha Phi Omega (APO) is a national co-ed service fraternity dedicated
+          to developing leadership, promoting friendship, and providing service
+          to others. At the University of Wisconsin–Madison, our Beta Theta
+          chapter carries out this mission by organizing a wide range of
+          impactful service projects, leadership opportunities, and brotherhood
+          events that strengthen both our campus and the greater Madison
+          community. Rooted in the values of leadership, friendship, and
+          service, we welcome students from all backgrounds who are passionate
+          about making a difference. Whether it’s volunteering with local
+          nonprofits, building strong campus bonds, or growing as a leader, APO
+          provides a meaningful and lasting experience for every member.
+        </p>
       </div>
     </div>
 
