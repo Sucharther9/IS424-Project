@@ -113,12 +113,12 @@ join_us.addEventListener("click", () => {
   calendar_page.classList.add("is-hidden");
   important_links_page.classList.add("is-hidden");
 });
-// important_link page
-let important_links = document.getElementById("important_links"); // Link or button to show Important Links page
+// important_link page added later
+let important_links = document.getElementById("important_links");
 let important_links_page = document.getElementById("important_links_page");
 important_links.addEventListener("click", () => {
-  important_links_page.classList.remove("is-hidden"); // Show Important Links page
-  home_page.classList.add("is-hidden"); // Hide other pages
+  important_links_page.classList.remove("is-hidden");
+  home_page.classList.add("is-hidden");
   contact_page.classList.add("is-hidden");
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
@@ -141,3 +141,32 @@ function plusSlides(n) {
 document.addEventListener("DOMContentLoaded", function () {
   showSlide(slideIndex);
 });
+//sign in / up stuff
+let currentAction = "signin"; // Default
+
+function openModal(action) {
+  currentAction = action;
+  document.getElementById("authModal").style.display = "flex";
+  document.getElementById("modalTitle").textContent =
+    action === "signup" ? "Sign Up" : "Sign In";
+}
+
+function closeModal() {
+  document.getElementById("authModal").style.display = "none";
+}
+
+function submitAuth() {
+  const email = document.getElementById("emailInput").value;
+  const password = document.getElementById("passwordInput").value;
+
+  if (email && password) {
+    if (currentAction === "signup") {
+      alert("You have signed up!");
+    } else {
+      alert("Welcome back!");
+    }
+    closeModal();
+  } else {
+    alert("Please fill out both fields.");
+  }
+}

@@ -142,3 +142,13 @@ a:hover {
 .custom-header .subtitle {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* text shadow */
 }
+/* Modal format */
+.modal {
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal-background {
+  background-color: rgba(0, 0, 0, 0.6);
+}
