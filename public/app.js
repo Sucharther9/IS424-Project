@@ -123,4 +123,50 @@ important_links.addEventListener("click", () => {
   event_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
+  about_us_page.classList.classList.add("is-hidden");
 });
+//Slide show on about page
+let slideIndex = 0;
+const slides = document.getElementsByClassName("slideshow-image");
+function showSlide(index) {
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[index].style.display = "block";
+}
+function plusSlides(n) {
+  slideIndex = (slideIndex + n + slides.length) % slides.length;
+  showSlide(slideIndex);
+}
+document.addEventListener("DOMContentLoaded", function () {
+  showSlide(slideIndex);
+});
+//sign in / up stuff
+let currentAction = "signin"; // Default
+
+function openModal(action) {
+  currentAction = action;
+  document.getElementById("authModal").style.display = "flex";
+  document.getElementById("modalTitle").textContent =
+    action === "signup" ? "Sign Up" : "Sign In";
+}
+
+function closeModal() {
+  document.getElementById("authModal").style.display = "none";
+}
+
+function submitAuth() {
+  const email = document.getElementById("emailInput").value;
+  const password = document.getElementById("passwordInput").value;
+
+  if (email && password) {
+    if (currentAction === "signup") {
+      alert("You have signed up!");
+    } else {
+      alert("Welcome back!");
+    }
+    closeModal();
+  } else {
+    alert("Please fill out both fields.");
+  }
+}
