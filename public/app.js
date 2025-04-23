@@ -152,3 +152,97 @@ function submitAuth() {
     alert("Please fill out both fields.");
   }
 }
+
+// stuff for the admin access, don't know if this workds
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    db.collection("users")
+      .doc(user.email)
+      .get()
+      .then((doc) => {
+        const userData = doc.data();
+        if (userData && userData.admin === 1) {
+          // Load admin views
+          loadSubmissions(
+            "contact_submissions",
+            "contact_submissions_container"
+          );
+          loadSubmissions("join_requests", "join_submissions_container");
+        }
+      });
+  }
+});
+
+function loadSubmissions(collection, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  db.collection(collection)
+    .get()
+    .then((querySnapshot) => {
+      container.innerHTML = ""; // clear first
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const card = document.createElement("div");
+        card.className = "card mb-3";
+        card.innerHTML = `
+        <header class="card-header">
+          <p class="card-header-title">
+            ${data.name || "No Name"} (${data.email || "No Email"})
+          </p>
+          <button class="delete m-2" aria-label="delete"></button>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            ${data.message || "No message provided"}
+          </div>
+        </div>
+      `;
+
+        // Delete logic
+        card.querySelector(".delete").addEventListener("click", () => {
+          db.collection(collection)
+            .doc(doc.id)
+            .delete()
+            .then(() => {
+              card.remove();
+            });
+        });
+
+        container.appendChild(card);
+      });
+    });
+}
+
+document.querySelector("#contact_page form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const email = document.getElementById("f_email").value;
+  const message = document.getElementById("feedback").value;
+
+  db.collection("contact_submissions")
+    .add({
+      email: email,
+      message: message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    })
+    .then(() => {
+      alert("Thank you for reaching out!");
+    });
+});
+
+document.querySelector("#join_us_page form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const email = document.getElementById("f_email").value;
+  const message = document.getElementById("feedback").value;
+
+  db.collection("join_requests")
+    .add({
+      email: email,
+      message: message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    })
+    .then(() => {
+      alert("Thank you for your interest in joining!");
+    });
+});
