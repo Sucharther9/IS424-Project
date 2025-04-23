@@ -105,7 +105,7 @@ important_links.addEventListener("click", () => {
   contact_page.classList.add("is-hidden");
   calendar_page.classList.add("is-hidden");
   join_us_page.classList.add("is-hidden");
-  about_us_page.classList.classList.add("is-hidden");
+  about_us_page.classList.add("is-hidden");
 });
 //Slide show on about page
 let slideIndex = 0;
