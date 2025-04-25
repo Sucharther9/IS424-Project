@@ -148,64 +148,73 @@ function submitAuth() {
   const email = document.getElementById("emailInput").value;
   const password = document.getElementById("passwordInput").value;
 
-  if (email && password) {
-    if (currentAction === "signup") {
-      // Get additional Sign Up info
-      const firstName = document.getElementById("firstNameInput").value;
-      const lastName = document.getElementById("lastNameInput").value;
-      const gradYear = document.getElementById("gradYearInput").value;
-      const gradSeason = document.getElementById("gradSeasonInput").value;
-      const status = document.querySelector('input[name="status"]:checked').value;
+  if (!email || !password) {
+    alert("Please fill out both Email and Password.");
+    return;
+  }
 
-      // Create user with Firebase Authentication
-      auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          const collectionName = status === "Student" ? "student" : "client";
+  if (currentAction === "signup") {
+    // ===== Get additional Sign Up info =====
+    const firstName = document.getElementById("firstNameInput").value;
+    const lastName = document.getElementById("lastNameInput").value;
+    const gradYear = document.getElementById("gradYearInput").value;      // Optional
+    const gradSeason = document.getElementById("gradSeasonInput").value;  // Optional
+    const statusElement = document.querySelector('input[name="status"]:checked');
 
-          // Save user info into Firestore
-          db.collection(collectionName).doc(user.email).set({
-            email: user.email,
-            firstName: firstName,
-            lastName: lastName,
-            gradYear: gradYear,
-            gradSeason: gradSeason,
-            status: status,
-            admin: 0, // default as not admin
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-          })
-          .then(() => {
-            alert("Sign Up successful and your information has been saved!");
-            closeModal();
-          })
-          .catch((error) => {
-            alert(`Failed to save user data: ${error.message}`);
-          });
+    // ===== Check required fields =====
+    if (!firstName || !lastName || !statusElement) {
+      alert("Please fill out First Name, Last Name, and select Student or Other.");
+      return;
+    }
+
+    const status = statusElement.value;
+    const collectionName = status === "Student" ? "student" : "client";
+
+    // ===== Create user with Firebase Authentication =====
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        // ===== Save user info into Firestore =====
+        db.collection(collectionName).doc(user.email).set({
+          email: user.email,
+          firstName: firstName,
+          lastName: lastName,
+          gradYear: gradYear || null,               // Optional (null if empty)
+          gradSeason: gradSeason || null,           // Optional (null if empty)
+          status: status,
+          admin: 0,                                // default as not admin
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
-        .catch((error) => {
-          if (error.code === "auth/email-already-in-use") {
-            alert("This email is already registered. Switching to Sign In mode.");
-            openModal('signin');                                 // Switch to Sign In mode
-            document.getElementById("emailInput").value = email;  // Keep email
-            document.getElementById("passwordInput").value = "";  // Clear password
-          } else {
-            alert(`Sign Up failed: ${error.message}`);
-          }
-        });
-
-    } else {
-      // Sign In process
-      auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-          alert("Welcome back!");
+          alert("Sign Up successful and your information has been saved!");
           closeModal();
         })
         .catch((error) => {
-          alert(`Sign In failed: ${error.message}`);
+          alert(`Failed to save user data: ${error.message}`);
         });
-    }
+      })
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          alert("This email is already registered. Switching to Sign In mode.");
+          openModal('signin');                                 // Switch to Sign In mode
+          document.getElementById("emailInput").value = email;  // Keep email
+          document.getElementById("passwordInput").value = "";  // Clear password
+        } else {
+          alert(`Sign Up failed: ${error.message}`);
+        }
+      });
+
   } else {
-    alert("Please fill out both Email and Password.");
+    // ===== Sign In process =====
+    auth.signInWithEmailAndPassword(email, password)
+      .then(() => {
+        alert("Welcome back!");
+        closeModal();
+      })
+      .catch((error) => {
+        alert(`Sign In failed: ${error.message}`);
+      });
   }
 }
 
@@ -242,52 +251,35 @@ function checkLoginStatus() {
 }
 
 
-// stuff for the admin access, don't know if this workds
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    db.collection("users")
-      .doc(user.email)
-      .get()
-      .then((doc) => {
-        const userData = doc.data();
-        if (userData && userData.admin === 1) {
-          // Show admin view (submissions list)
-          loadSubmissions("contact_submissions", "contact_submissions_container");
-        } else {
-          // Normal user → show only the form
-          document.getElementById("contact_submissions_container").innerHTML = "";
-        }
-      });
-  }
-});
-
+// load submissions and allow to delete it only by admin
 function loadSubmissions(collection, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
   db.collection(collection)
+    .orderBy("timestamp", "desc")
     .get()
     .then((querySnapshot) => {
-      container.innerHTML = ""; // clear first
+      container.innerHTML = ""; // Clear previous submissions
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         const card = document.createElement("div");
         card.className = "card mb-3";
         card.innerHTML = `
-        <header class="card-header">
-          <p class="card-header-title">
-            ${data.name || "No Name"} (${data.email || "No Email"})
-          </p>
-          <button class="delete m-2" aria-label="delete"></button>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            ${data.message || "No message provided"}
+          <header class="card-header">
+            <p class="card-header-title">
+              ${data.email || "No Email"}
+            </p>
+            <button class="delete m-2" aria-label="delete"></button>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              ${data.message || "No message provided"}
+            </div>
           </div>
-        </div>
-      `;
+        `;
 
-        // Delete logic
+        // Delete logic for admin
         card.querySelector(".delete").addEventListener("click", () => {
           db.collection(collection)
             .doc(doc.id)
@@ -302,13 +294,66 @@ function loadSubmissions(collection, containerId) {
     });
 }
 
-//
+
+// Contact Us page is different based on the status
+function checkContactUsPage() {
+  const form = document.getElementById("feedback_form");
+  const notLoggedInMessage = document.getElementById("notLoggedInMessage");
+  const submissionsContainer = document.getElementById("contact_submissions_container");
+
+  auth.onAuthStateChanged((user) => {
+    if (!user) {
+      // Not logged in → show login message, hide form and submissions
+      notLoggedInMessage.classList.remove("is-hidden");
+      form.classList.add("is-hidden");
+      submissionsContainer.classList.add("is-hidden");
+    } else {
+      // Logged in → hide login message
+      notLoggedInMessage.classList.add("is-hidden");
+
+      // Check in student first
+      db.collection("student").doc(user.email).get().then((doc) => {
+        if (doc.exists) {
+          const userData = doc.data();
+          handleAdminView(userData);
+        } else {
+          // Check in client if not found in student
+          db.collection("client").doc(user.email).get().then((doc) => {
+            const userData = doc.data();
+            handleAdminView(userData);
+          });
+        }
+      });
+    }
+  });
+
+  function handleAdminView(userData) {
+    if (userData && userData.admin === 1) {
+      // Admin → show submissions, hide form
+      form.classList.add("is-hidden");
+      submissionsContainer.classList.remove("is-hidden");
+      loadSubmissions("contact_submissions", "contact_submissions_container");
+    } else {
+      // Regular user → show form, hide submissions
+      form.classList.remove("is-hidden");
+      submissionsContainer.classList.add("is-hidden");
+    }
+  }
+}
+
+
+
+
+
+
+// 
 document.addEventListener("DOMContentLoaded", () => {
   checkLoginStatus();
+  checkContactUsPage();
 });
 
 
-
+// store feedback forms in the firebase
 document.querySelector("#feedback_form").addEventListener("submit", (e) => {
   e.preventDefault();
   const email = document.getElementById("f_email").value;
@@ -324,6 +369,9 @@ document.querySelector("#feedback_form").addEventListener("submit", (e) => {
       alert("Thank you for reaching out!");
     });
 });
+
+
+
 
 // document.querySelector("#join_us_page form").addEventListener("submit", (e) => {
 //   e.preventDefault();
