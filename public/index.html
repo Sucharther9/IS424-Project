@@ -66,58 +66,131 @@
         </div>
       </div>
     </nav>
-    <!-- sign in modal, should pop up -->
-    <div id="authModal" class="modal" style="display: none">
-      <div class="modal-background" onclick="closeModal()"></div>
-      <div class="modal-content" style="max-width: 400px; margin: auto">
-        <div
-          class="box"
-          style="padding: 2rem; background: white; border-radius: 8px"
-        >
-          <h2 id="modalTitle" class="title is-4" style="text-align: center">
-            Sign In
-          </h2>
-          <div class="field">
-            <label class="label">Email</label>
-            <div class="control">
-              <input
-                id="emailInput"
-                class="input"
-                type="email"
-                placeholder="e.g. you@example.com"
-              />
-            </div>
-          </div>
+<!-- Sign In / Sign Up Modal -->
+<div id="authModal" class="modal" style="display: none">
+  <div class="modal-background" onclick="closeModal()"></div>
+  <div class="modal-content" style="max-width: 400px; margin: auto">
+    <div
+      class="box"
+      style="padding: 2rem; background: white; border-radius: 8px"
+    >
+      <h2 id="modalTitle" class="title is-4" style="text-align: center">
+        Sign In
+      </h2>
 
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-              <input
-                id="passwordInput"
-                class="input"
-                type="password"
-                placeholder="********"
-              />
-            </div>
-          </div>
+      <!-- First Name (Sign Up only) -->
+      <div class="field signup-only" style="display: none;">
+        <label class="label">First Name</label>
+        <div class="control">
+          <input
+            id="firstNameInput"
+            class="input"
+            type="text"
+            placeholder="First Name"
+          />
+        </div>
+      </div>
 
-          <div class="field" style="margin-top: 1.5rem">
-            <button
-              id="authButton"
-              class="button is-fullwidth is-link"
-              onclick="submitAuth()"
-            >
-              Submit
-            </button>
+      <!-- Last Name (Sign Up only) -->
+      <div class="field signup-only" style="display: none;">
+        <label class="label">Last Name</label>
+        <div class="control">
+          <input
+            id="lastNameInput"
+            class="input"
+            type="text"
+            placeholder="Last Name"
+          />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input
+            id="emailInput"
+            class="input"
+            type="email"
+            placeholder="e.g. you@example.com"
+          />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input
+            id="passwordInput"
+            class="input"
+            type="password"
+            placeholder="********"
+          />
+        </div>
+      </div>
+
+      <!-- Graduation Year (Sign Up only) -->
+      <div class="field signup-only" style="display: none;">
+        <label class="label">Expected Graduation Year</label>
+        <div class="control">
+          <input
+            id="gradYearInput"
+            class="input"
+            type="number"
+            placeholder="e.g. 2026"
+          />
+        </div>
+      </div>
+
+      <!-- Graduation Season (Sign Up only) -->
+      <div class="field signup-only" style="display: none;">
+        <label class="label">Expected Graduation Season</label>
+        <div class="control">
+          <div class="select">
+            <select id="gradSeasonInput">
+              <option value="">Select Season</option>
+              <option value="Spring">Spring</option>
+              <option value="Fall">Fall</option>
+            </select>
           </div>
         </div>
       </div>
-      <button
-        class="modal-close is-large"
-        aria-label="close"
-        onclick="closeModal()"
-      ></button>
+
+      <!-- Student or Other (Sign Up only) -->
+      <div class="field signup-only" style="display: none;">
+        <label class="label">Are you a student or other?</label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="status" value="Student" checked />
+            Student
+          </label>
+          <label class="radio">
+            <input type="radio" name="status" value="Other" />
+            Other
+          </label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="field" style="margin-top: 1.5rem">
+        <button
+          id="authButton"
+          class="button is-fullwidth is-link"
+          onclick="submitAuth()"
+        >
+          Submit
+        </button>
+      </div>
     </div>
+  </div>
+  <button
+    class="modal-close is-large"
+    aria-label="close"
+    onclick="closeModal()"
+  ></button>
+</div>
+
     <!-- Header Section -->
     <header class="custom-header">
       <div class="hero-content">

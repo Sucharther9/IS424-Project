@@ -126,11 +126,17 @@ document.addEventListener("DOMContentLoaded", function () {
 //sign in / up stuff
 let currentAction = "signin"; // Default
 
+// sign up and in form
 function openModal(action) {
   currentAction = action;
   document.getElementById("authModal").style.display = "flex";
   document.getElementById("modalTitle").textContent =
     action === "signup" ? "Sign Up" : "Sign In";
+
+  const signupFields = document.querySelectorAll(".signup-only");
+  signupFields.forEach(field => {
+    field.style.display = action === "signup" ? "block" : "none";
+  });
 }
 
 function closeModal() {
