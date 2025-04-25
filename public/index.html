@@ -457,25 +457,28 @@
     </div>
 
     <!-- Contact Us -->
-    <div class="columns is-centered is-hidden" id="contact_page">
+    <div class="columns is-centered" id="contact_page">
       <div class="column is-half box">
-        <form id="feedback_form">
+        
+        <!-- When not logged in -->
+        <div id="notLoggedInMessage" class="has-text-centered is-hidden">
+          <p class="has-text-weight-bold">
+            Please log in or sign up to contact us!
+          </p>
+        </div>
+    
+        <!-- When user is logged in -->
+        <form id="feedback_form" class="is-hidden">
           <div class="field">
             <label class="label">Email:</label>
             <div class="control">
-              <input class="input" type="email" name="" id="f_email" required />
+              <input class="input" type="email" id="f_email" required />
             </div>
           </div>
           <div class="field">
             <label class="label">What Do You Want to Learn More About?</label>
             <div class="control">
-              <textarea
-                class="textarea"
-                name=""
-                id="feedback"
-                cols="30"
-                rows="10"
-              ></textarea>
+              <textarea class="textarea" id="feedback" cols="30" rows="10"></textarea>
             </div>
           </div>
           <div class="field">
@@ -484,10 +487,13 @@
             </div>
           </div>
         </form>
-        <!-- Here is where admin access shows submissions??? -->
-        <div id="contact_submissions_container" class="mt-4"></div>
+    
+        <!-- Admin: submissions list -->
+        <div id="contact_submissions_container" class="mt-4 is-hidden"></div>
       </div>
     </div>
+    
+    
     <!-- about us page -->
     <div class="columns is-centered is-hidden" id="about_us_page">
       <div class="column is-half box">
