@@ -266,3 +266,31 @@ a:hover {
 .columns.is-centered {
   margin-bottom: 3rem;
 }
+
+
+/* About US design */
+#about_us_page .columns {
+  justify-content: center;
+  align-items: center;
+}
+
+#about_us_page .column {
+  padding: 1rem;
+}
+
+#about_us_page .image img {
+  max-width: 100px;
+  margin-bottom: 0.5rem;
+}
+
+#about_us_page hr {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+}
+
+/* Icon hover effect */
+#about_us_page .image img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
