@@ -210,6 +210,38 @@ function submitAuth() {
 }
 
 
+//
+// Change navbar status when sign in and sign out
+function checkLoginStatus() {
+  const authButtons = document.getElementById("authButtons");  // Sign Up / Sign In
+  const logoutButton = document.getElementById("logoutButtonContainer");  // Log Out
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      // Logged in → hide Sign Up / Sign In, show Log Out
+      authButtons.classList.add("is-hidden");
+      logoutButton.classList.remove("is-hidden");
+
+      // Attach the logout function here to avoid duplication
+      logoutButton.querySelector("button").onclick = function() {
+        auth.signOut()
+          .then(() => {
+            alert("You have been logged out.");
+          })
+          .catch((error) => {
+            alert(`Logout failed: ${error.message}`);
+          });
+      };
+
+    } else {
+      // Not logged in, then show Sign Up / Sign In, hide Log Out
+      authButtons.classList.remove("is-hidden");
+      logoutButton.classList.add("is-hidden");
+    }
+  });
+}
+
+
 // stuff for the admin access, don't know if this workds
 auth.onAuthStateChanged((user) => {
   if (user) {
@@ -269,6 +301,13 @@ function loadSubmissions(collection, containerId) {
       });
     });
 }
+
+//
+document.addEventListener("DOMContentLoaded", () => {
+  checkLoginStatus();
+});
+
+
 
 document.querySelector("#feedback_form").addEventListener("submit", (e) => {
   e.preventDefault();

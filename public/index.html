@@ -52,7 +52,7 @@
             >
             <a class="navbar-item" href="#" id="contact">Contact Us</a>
             <a class="navbar-item" href="#" id="about">About Us</a>
-            <div class="navbar-item">
+            <div class="navbar-item" id="authButtons">
               <div class="buttons">
                 <button class="button is-light" onclick="openModal('signup')">
                   Sign Up
@@ -61,6 +61,10 @@
                   Sign In
                 </button>
               </div>
+            </div>
+              <!-- Signout button when sing in -->
+            <div class="navbar-item is-hidden" id="logoutButtonContainer">
+              <button class="button is-light" onclick="logout()">Sign Out</button>
             </div>
           </div>
         </div>
