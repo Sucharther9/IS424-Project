@@ -255,7 +255,8 @@
             </div>
           </div>
         </div>
-        <div class="columns is-centered">
+        <!-- not using this join form in how to join page-->
+        <!-- <div class="columns is-centered">
           <div class="column is-half">
             <div class="box">
               <form id="feedback_form">
@@ -291,8 +292,8 @@
               </form>
             </div>
           </div>
-        </div>
-        <div id="join_submissions_container" class="mt-4"></div>
+        </div> -->
+        <!-- <div id="join_submissions_container" class="mt-4"></div> -->
       </div>
     </div>
 
@@ -401,7 +402,7 @@
           </div>
           <div class="field">
             <div class="control">
-              <button class="button is-primary">Submit</button>
+              <button class="button is-primary" type="submit">Submit</button>
             </div>
           </div>
         </form>
@@ -488,8 +489,8 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         // define authentication variable
-        let auth = firebase.auth();
-        let db = firebase.firestore();
+        window.auth = firebase.auth();
+        window.db = firebase.firestore();
 
         // define a storage reference
         let ref = firebase.storage().ref();

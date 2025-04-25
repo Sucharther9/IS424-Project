@@ -154,7 +154,6 @@ function submitAuth() {
 }
 
 // stuff for the admin access, don't know if this workds
-
 auth.onAuthStateChanged((user) => {
   if (user) {
     db.collection("users")
@@ -163,12 +162,11 @@ auth.onAuthStateChanged((user) => {
       .then((doc) => {
         const userData = doc.data();
         if (userData && userData.admin === 1) {
-          // Load admin views
-          loadSubmissions(
-            "contact_submissions",
-            "contact_submissions_container"
-          );
-          loadSubmissions("join_requests", "join_submissions_container");
+          // Show admin view (submissions list)
+          loadSubmissions("contact_submissions", "contact_submissions_container");
+        } else {
+          // Normal user → show only the form
+          document.getElementById("contact_submissions_container").innerHTML = "";
         }
       });
   }
@@ -215,7 +213,7 @@ function loadSubmissions(collection, containerId) {
     });
 }
 
-document.querySelector("#contact_page form").addEventListener("submit", (e) => {
+document.querySelector("#feedback_form").addEventListener("submit", (e) => {
   e.preventDefault();
   const email = document.getElementById("f_email").value;
   const message = document.getElementById("feedback").value;
@@ -231,18 +229,18 @@ document.querySelector("#contact_page form").addEventListener("submit", (e) => {
     });
 });
 
-document.querySelector("#join_us_page form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const email = document.getElementById("f_email").value;
-  const message = document.getElementById("feedback").value;
+// document.querySelector("#join_us_page form").addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const email = document.getElementById("f_email").value;
+//   const message = document.getElementById("feedback").value;
 
-  db.collection("join_requests")
-    .add({
-      email: email,
-      message: message,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    })
-    .then(() => {
-      alert("Thank you for your interest in joining!");
-    });
-});
+//   db.collection("join_requests")
+//     .add({
+//       email: email,
+//       message: message,
+//       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+//     })
+//     .then(() => {
+//       alert("Thank you for your interest in joining!");
+//     });
+// });
