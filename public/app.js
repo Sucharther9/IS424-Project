@@ -143,21 +143,72 @@ function closeModal() {
   document.getElementById("authModal").style.display = "none";
 }
 
+// sign up and collect data
 function submitAuth() {
   const email = document.getElementById("emailInput").value;
   const password = document.getElementById("passwordInput").value;
 
   if (email && password) {
     if (currentAction === "signup") {
-      alert("You have signed up!");
+      // Get additional Sign Up info
+      const firstName = document.getElementById("firstNameInput").value;
+      const lastName = document.getElementById("lastNameInput").value;
+      const gradYear = document.getElementById("gradYearInput").value;
+      const gradSeason = document.getElementById("gradSeasonInput").value;
+      const status = document.querySelector('input[name="status"]:checked').value;
+
+      // Create user with Firebase Authentication
+      auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          const collectionName = status === "Student" ? "student" : "client";
+
+          // Save user info into Firestore
+          db.collection(collectionName).doc(user.email).set({
+            email: user.email,
+            firstName: firstName,
+            lastName: lastName,
+            gradYear: gradYear,
+            gradSeason: gradSeason,
+            status: status,
+            admin: 0, // default as not admin
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          })
+          .then(() => {
+            alert("Sign Up successful and your information has been saved!");
+            closeModal();
+          })
+          .catch((error) => {
+            alert(`Failed to save user data: ${error.message}`);
+          });
+        })
+        .catch((error) => {
+          if (error.code === "auth/email-already-in-use") {
+            alert("This email is already registered. Switching to Sign In mode.");
+            openModal('signin');                                 // Switch to Sign In mode
+            document.getElementById("emailInput").value = email;  // Keep email
+            document.getElementById("passwordInput").value = "";  // Clear password
+          } else {
+            alert(`Sign Up failed: ${error.message}`);
+          }
+        });
+
     } else {
-      alert("Welcome back!");
+      // Sign In process
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Welcome back!");
+          closeModal();
+        })
+        .catch((error) => {
+          alert(`Sign In failed: ${error.message}`);
+        });
     }
-    closeModal();
   } else {
-    alert("Please fill out both fields.");
+    alert("Please fill out both Email and Password.");
   }
 }
+
 
 // stuff for the admin access, don't know if this workds
 auth.onAuthStateChanged((user) => {
