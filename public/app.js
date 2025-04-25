@@ -379,21 +379,3 @@ document.querySelector("#feedback_form").addEventListener("submit", (e) => {
     });
 });
 
-
-
-
-// document.querySelector("#join_us_page form").addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   const email = document.getElementById("f_email").value;
-//   const message = document.getElementById("feedback").value;
-
-//   db.collection("join_requests")
-//     .add({
-//       email: email,
-//       message: message,
-//       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-//     })
-//     .then(() => {
-//       alert("Thank you for your interest in joining!");
-//     });
-// });

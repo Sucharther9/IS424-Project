@@ -129,7 +129,7 @@ a:hover {
   background-image: url("resources/Fall campus.png");
   background-size: cover;
   background-position: center;
-  height: 620px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;
