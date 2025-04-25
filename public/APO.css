@@ -190,3 +190,43 @@ a:hover {
   overflow: hidden;
 }
 
+/* How to join page three box design */
+.requirement-box {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.requirement-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.brother-box {
+  background-color: #e3f2fd; /* Light blue */
+}
+.associate-box {
+  background-color: #e8f5e9; /* Light green */
+}
+.pledge-box {
+  background-color: #fff3e0; /* Light orange */
+}
+
+
+.requirement-title {
+  color: #4a78d0;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.requirements-container {
+  justify-content: center;
+}
+
+.join-button-container {
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+
