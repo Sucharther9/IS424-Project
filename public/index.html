@@ -131,16 +131,84 @@
     <!-- Home Page Content -->
     <section class="section">
       <div class="container" id="home_page">
-        <div class="columns">
+        <div class="columns is-vcentered align-image-text">
           <div class="column is-one-third">
-            <img
-              src="resources/APO.png"
-              alt="logo"
-              style="width: 80%; height: auto"
-            />
+            <div class="box slideshow">
+              <div
+                class="slideshow-container"
+                style="position: relative; max-width: 100%"
+              >
+                <div class="slideshow-image" style="display: block">
+                  <img
+                    src="resources/20240911_172142_94CEE7.png"
+                    style="width: 100%; border-radius: 10px"
+                  />
+                </div>
+                <div class="slideshow-image" style="display: none">
+                  <img
+                    src="resources/20240911_172142_94CEE7.png"
+                    style="width: 100%; border-radius: 10px"
+                  />
+                </div>
+                <div class="slideshow-image" style="display: none">
+                  <img
+                    src="resources/20241122_181309_9CCA90.png"
+                    style="width: 100%; border-radius: 10px"
+                  />
+                </div>
+                <div class="slideshow-image" style="display: none">
+                  <img
+                    src="resources/20250206_212547_91A0ED.png"
+                    style="width: 100%; border-radius: 10px"
+                  />
+                </div>
+                <div class="slideshow-image" style="display: none">
+                  <img
+                    src="resources/20240920_182450_9A5616.png"
+                    style="width: 100%; border-radius: 10px"
+                  />
+                </div>
+                <div class="slideshow-image" style="display: none">
+                  <img
+                    src="resources/20230726_160608_908105.png"
+                    style="width: 100%; border-radius: 10px"
+                  />
+                </div>
+                <div class="slideshow-image" style="display: none">
+                  <img
+                    src="resources/20240413_130652_901517.png"
+                    style="width: 100%; border-radius: 10px"
+                  />
+                </div>
+                <a
+                  class="button is-small is-light"
+                  style="
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                  "
+                  onclick="plusSlides(-1)"
+                >
+                  &#10094;
+                </a>
+                <a
+                  class="button is-small is-light"
+                  style="
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                  "
+                  onclick="plusSlides(1)"
+                >
+                  &#10095;
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div class="column is-two-thirds">
+          <div class="column is-two-thirds has-background-logo">
             <div class="box">
               <p>
                 Alpha Phi Omega is a national Co-ed Service Fraternity.
@@ -155,79 +223,6 @@
                 Alpha Phi Omega - Beta Theta is the place for you!
               </p>
             </div>
-          </div>
-        </div>
-        <div class="box slideshow">
-          <div
-            class="slideshow-container"
-            style="position: relative; max-width: 100%"
-          >
-            <div class="slideshow-image" style="display: block">
-              <img
-                src="resources/20240911_172142_94CEE7.png"
-                style="width: 100%; border-radius: 10px"
-              />
-            </div>
-            <div class="slideshow-image" style="display: none">
-              <img
-                src="resources/20240911_172142_94CEE7.png"
-                style="width: 100%; border-radius: 10px"
-              />
-            </div>
-            <div class="slideshow-image" style="display: none">
-              <img
-                src="resources/20241122_181309_9CCA90.png"
-                style="width: 100%; border-radius: 10px"
-              />
-            </div>
-            <div class="slideshow-image" style="display: none">
-              <img
-                src="resources/20250206_212547_91A0ED.png"
-                style="width: 100%; border-radius: 10px"
-              />
-            </div>
-            <div class="slideshow-image" style="display: none">
-              <img
-                src="resources/20240920_182450_9A5616.png"
-                style="width: 100%; border-radius: 10px"
-              />
-            </div>
-            <div class="slideshow-image" style="display: none">
-              <img
-                src="resources/20230726_160608_908105.png"
-                style="width: 100%; border-radius: 10px"
-              />
-            </div>
-            <div class="slideshow-image" style="display: none">
-              <img
-                src="resources/20240413_130652_901517.png"
-                style="width: 100%; border-radius: 10px"
-              />
-            </div>
-            <a
-              class="button is-small is-light"
-              style="
-                position: absolute;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%);
-              "
-              onclick="plusSlides(-1)"
-            >
-              &#10094;
-            </a>
-            <a
-              class="button is-small is-light"
-              style="
-                position: absolute;
-                top: 50%;
-                right: 0;
-                transform: translateY(-50%);
-              "
-              onclick="plusSlides(1)"
-            >
-              &#10095;
-            </a>
           </div>
         </div>
       </div>
@@ -480,7 +475,7 @@
       <!-- Add Firebase products that you want to use -->
       <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
-      <script type="module">
+      <script>
         const firebaseConfig = {
           apiKey: "AIzaSyCxYqv3XK_41WN_FCiQWIVyJkFTECgaNzw",
           authDomain: "alphaphiomega-5bee2.firebaseapp.com",
