@@ -270,27 +270,50 @@ a:hover {
 
 /* About US design */
 #about_us_page .columns {
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center the icon section horizontally */
 }
 
 #about_us_page .column {
-  padding: 1rem;
-}
-
-#about_us_page .image img {
-  max-width: 100px;
-  margin-bottom: 0.5rem;
+  padding: 1rem; /* Add spacing inside the text box */
 }
 
 #about_us_page hr {
   border: none;
   height: 1px;
-  background-color: #ccc;
+  background-color: #ccc; /* Light gray divider line */
+  margin: 2rem 0; /* Spacing above and below the line */
 }
 
-/* Icon hover effect */
-#about_us_page .image img:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
+/* Icon Section Styling */
+#about_us_page .icon-section {
+  display: flex;
+  justify-content: center; /* Align icons horizontally to the center */
+  align-items: flex-start; /* Align icons and labels vertically at the top */
+  gap: 5rem; /* Space between each icon block */
+  margin-top: 2rem; /* Space above the icon section */
+}
+
+#about_us_page .icon-item {
+  text-align: center; /* Center icon and label text */
+  display: flex;
+  flex-direction: column; /* Stack icon and label vertically */
+  align-items: center; /* Align icon and label in the center horizontally */
+}
+
+#about_us_page .icon-item img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 0.5rem; /* Space between icon and label */
+  transition: transform 0.3s ease; /* Smooth scaling on hover */
+}
+
+#about_us_page .icon-item img:hover {
+  transform: scale(1.1); /* Slight zoom effect when hovered */
+}
+
+#about_us_page .icon-label {
+  margin-top: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f2ce66; /* Gold/yellow color for the labels */
 }
