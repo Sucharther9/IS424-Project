@@ -264,35 +264,44 @@ function loadSubmissions(collection, containerId) {
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         const card = document.createElement("div");
-        card.className = "card mb-3";
+        card.className = "box has-background-light mb-4";  // Bulma box + light background
+
         card.innerHTML = `
-          <header class="card-header">
-            <p class="card-header-title">
-              ${data.email || "No Email"}
-            </p>
-            <button class="delete m-2" aria-label="delete"></button>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              ${data.message || "No message provided"}
+          <header class="level">
+            <div class="level-left">
+              <p class="has-text-weight-semibold">
+                ${data.email || "No Email"}
+              </p>
             </div>
+            <div class="level-right">
+              <button class="delete" aria-label="delete"></button>
+            </div>
+          </header>
+          <div class="content mt-2">
+            <p>${data.message || "No message provided"}</p>
+            <p class="is-size-7 has-text-grey">
+              ${data.timestamp?.toDate().toLocaleString() || ""}
+            </p>
           </div>
         `;
 
         // Delete logic for admin
         card.querySelector(".delete").addEventListener("click", () => {
-          db.collection(collection)
-            .doc(doc.id)
-            .delete()
-            .then(() => {
-              card.remove();
-            });
+          if (confirm("Are you sure you want to delete this submission?")) {
+            db.collection(collection)
+              .doc(doc.id)
+              .delete()
+              .then(() => {
+                card.remove();
+              });
+          }
         });
 
         container.appendChild(card);
       });
     });
 }
+
 
 
 // Contact Us page is different based on the status
