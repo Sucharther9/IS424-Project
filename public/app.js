@@ -123,6 +123,29 @@ function plusSlides(n) {
 document.addEventListener("DOMContentLoaded", function () {
   showSlide(slideIndex);
 });
+
+// navbar-burger menu can be opened
+// Bulma navbar burger toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const $navbarBurgers = Array.prototype.slice.call(
+    document.querySelectorAll(".navbar-burger"),
+    0
+  );
+
+  if ($navbarBurgers.length > 0) {
+    $navbarBurgers.forEach((el) => {
+      el.addEventListener("click", () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        el.classList.toggle("is-active");
+        $target.classList.toggle("is-active"); 
+      });
+    });
+  }
+});
+
+
+
 //sign in / up stuff
 let currentAction = "signin"; // Default
 
