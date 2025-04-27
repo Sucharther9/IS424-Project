@@ -17,7 +17,7 @@ async function testLogin() {
   });
 
   // Local testing URL (change to production URL when needed)
-  await page.goto("http://127.0.0.1:5502/IS424-Project/public/index.html"); //should be change to public website
+  await page.goto("https://alphaphiomega-5bee2.web.app/");
 
   // Open the navigation menu
  
