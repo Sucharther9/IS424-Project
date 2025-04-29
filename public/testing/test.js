@@ -52,7 +52,7 @@ async function testLogin() {
 
   console.log("Feedback Submission Test Passed!");
 
-  // await browser.close();
+  await browser.close();
 }
 
 testLogin();
